@@ -152,7 +152,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				func_cmp = get_func(format + i);
+				func_cmp = get_func((char *)format + i);
 				if (func_cmp.f)
 				{
 					point = choose_pointer(args,
