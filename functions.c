@@ -3,9 +3,8 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
-int print_int(void *p)
+int _print_int(int num)
 {
-	int num = *p;
 	int out = 0;
 
 	if (num >= 0)
@@ -17,7 +16,7 @@ int print_int(void *p)
 		}
 		else
 		{
-			out = (print_int(num / 10) + 1);
+			out = (_print_int(num / 10) + 1);
 			_putchar((num % 10) + '0');
 			return (out);
 		}
@@ -25,11 +24,12 @@ int print_int(void *p)
 	else
 	{
 		_putchar('-');
-		return (print_int(num * -1) + 1);
+		return (_print_int(num * -1) + 1);
 	}
 }
-int print_str(void *p)
+int print_str(char *p)
 {
+	char *str;
 	str = p;
 	if (str)
 	{
@@ -44,7 +44,11 @@ int print_str(void *p)
 	else
 		print_str("(nil)");
 }
-int print_char(void *p)
+int print_char(char *p)
 {
 	return (_putchar(*p));
+}
+int print_int(int *p)
+{
+	return (_print_int((int)*p));
 }
