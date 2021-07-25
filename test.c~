@@ -1,0 +1,31 @@
+#include "holberton.h"
+#include <stdio.h>
+
+int main()
+{
+	int out;
+	printf("%c\n",'c');
+	printf("%d\n",1234);
+	printf("%e\n",1234.0);
+	printf("%f\n",1234567898.0);
+	printf("%f\n",1234.0);
+	printf("%f\n",1.12345645);
+	printf("%i\n",1234);
+	printf("%o\n",1234);
+	printf("%s\n","string");
+	printf("%u\n",1234);
+	printf("%x\n",1234);
+	printf("%%\n");
+	printf("\n\n");
+	out = _putchar('c');
+	printf("%d", out);
+	_putchar('\n');
+	out = print_int(-1234);
+	printf("%d", out);
+	_putchar('\n');
+	out = print_str("sabelo\nmi ney\n");
+	printf("%d", out);
+	_putchar('\n');
+	printf("%s","HOL\nAAA");
+	return(0);
+}
