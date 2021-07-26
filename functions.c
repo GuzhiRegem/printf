@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdio.h>
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
@@ -43,10 +44,11 @@ int print_str(char *p)
 	}
 	else
 		print_str("(nil)");
+	return(0);
 }
-int print_char(char *p)
+int print_char(int *p)
 {
-	return (_putchar(*p));
+	return (_putchar((int)*p));
 }
 int print_int(int *p)
 {

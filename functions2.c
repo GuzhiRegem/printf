@@ -12,9 +12,10 @@ int print_binary(int *p)
 	int count = 0, i;
 	int *arr;
 	unsigned int n;
-	n = *p;
-	unsigned int tmp = n;
+	unsigned int tmp;
 
+	n = *p;
+	tmp = n;
 	while (n / 2 != 0)
 	{
 		n /= 2;
@@ -79,11 +80,11 @@ int print_uint(unsigned int *p)
 int print_octa(int *p)
 {
 	unsigned int num;
-	num = *p;
 	unsigned int copy;
 	char *octa;
 	int i, i2 = 0, cont = 0;
 
+	num = *p;
 	if (num == 0)
 		return (_putchar('0'));
 	for (copy = num; copy != 0; i2++)
@@ -113,14 +114,14 @@ int print_octa(int *p)
  *@p: o print hexadecimal
  * Return: number.
  */
-int print_lowhex(int *p)
+int print_lowhex(unsigned int *p)
 {
 	unsigned int num;
-	num = *p;
 	unsigned int num2;
 	int i, i2, copy, cont = 0;
 	char *numhex;
 
+	num = *p;
 	if (num == 0)
 		return (_putchar('0'));
 	for (num2 = num; num2 != 0; cont++)
@@ -147,14 +148,14 @@ int print_lowhex(int *p)
  * @p: va_list that contains the hexadecimal to print
  * Return: number of digits printed
  */
-int print_uphex(int *p )
+int print_uphex(unsigned int *p )
 {
 	unsigned int NUM;
-	NUM = *p;
 	unsigned int NUM2;
 	int I, I2, COPY, CONT = 0;
 	char *NUMHEX;
 
+	NUM = *p;
 	if (NUM == 0)
 		return (_putchar('0'));
 	for (NUM2 = NUM; NUM2 != 0; CONT++)
