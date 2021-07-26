@@ -5,24 +5,26 @@
 typedef struct printers_comp
 {
 	char *str;
-	int (*f)(void *);
+	int (*f)();
 	int type;
 } printer_comp;
 typedef struct printers_ret
 {
-	int (*f)(void *);
+	int (*f)();
 	int type;
+	int chars;
 } printer;
 int cmpr(printer_comp com, char *str)
 {
-	int out = 1;
+	int out = 0;
 	int i;
 
 	for (i = 0; com.str[i]; i++)
 	{
 		if (com.str[i] != str[i])
-			out = 0;
+			out = 1;
 	}
+	out += (i - 1) * 10;
 	return (out);
 }
 printer get_func(char *s)
@@ -47,6 +49,7 @@ printer get_func(char *s)
 		{"i", print_int, 0},
 		{"u", print_uint, 2},
 		{"o", print_octa, 0},
+		{"b", print_binary, 0},
 		{"x", print_lowhex, 0},
 		{"X", print_uphex, 0},
 		{"S", print_unf_str, 1},
@@ -70,15 +73,17 @@ printer get_func(char *s)
 	{
 		test = cases[i];
 		comp = cmpr(test, s);
-		if (comp)
+		if (comp % 10)
 		{
 			out.f = test.f;
 			out.type = test.type;
+			out.chars = comp / 10;
 			return (out);
 		}
 	}
 	out.f = NULL;
 	out.type = 0;
+	out.chars = 0;
 	return (out);
 
 }
@@ -161,6 +166,7 @@ int _printf(const char *format, ...)
 					{
 						out += func_cmp.f(point);
 						free(point);
+						i += func_cmp.chars;
 					}
 				}
 			}

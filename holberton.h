@@ -3,21 +3,22 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int print_char(void *p);
-int print_int(void *p);
-int print_str(void *p);
+int print_char(char *p);
+int print_int(int *p);
+int print_str(char *p);
 
-int print_uint(void *p);
-int print_octa(void *p);
-int print_lowhex(void *p);
-int print_uphex(void *p);
-int print_unf_str(void *p);
+int print_binary(int *p);
+int print_uint(unsigned int *p);
+int print_octa(int *p);
+int print_lowhex(int *p);
+int print_uphex(int *p);
+int print_unf_str(char *p);
 int print_pointer(void *p);
-int print_rev(void *p);
-int print_ROT(void *p);
-int print_long_int(void *p);
-int print_long_uint(void *p);
-int print_long_octa(void *p);
-int print_long_lowhex(void *p);
-int print_long_uphex(void *p);
+int print_rev(char *p);
+int print_ROT(char *p);
+int print_long_int(long int *p);
+int print_long_uint(unsigned long int *p);
+int print_long_octa(long int *p);
+int print_long_lowhex(long int *p);
+int print_long_uphex(long int *p);
 #endif
