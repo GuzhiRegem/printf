@@ -27,6 +27,10 @@ void *choose_pointer1(va_list args, int type)
 		if (st)
 		{
 			st = va_arg(args, char *);
+			if (!st)
+			{
+				st = "(null)";
+			}
 			return (st);
 		}
 		break;
