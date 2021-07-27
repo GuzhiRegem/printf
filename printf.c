@@ -115,13 +115,10 @@ int _printf(const char *format, ...)
 	int *ptr = &i;
 
 	if (!format)
-	{
-		out = -1;
-		return (out);
-	}
+		return (-1);
 	va_start(args, format);
-	if (!args)
-		return(-1);
+	if (args == NULL)
+		return (-1);
 	for (i = 0; format[i]; i++)
 	{
 		if (!incomm)

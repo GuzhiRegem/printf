@@ -6,8 +6,24 @@
  */
 int print_unf_str(char *p)
 {
-	_putchar(p[0]);
-	return (p[0]);
+	char *str;
+	int num1, num2;
+
+	str = p;
+	if (!str[0])
+		return (0);
+	if ((str[0] >= 32) && (str[0] < 127))
+	{
+		_putchar(str[0]);
+		return (print_str(str + 1) + 1);
+	}
+	_putchar('\\');
+	_putchar('x');
+	num1 = str[0] / 16;
+	num2 = str[0] % 16;
+	_putchar(num1 > 9 ? (num1 - 10) + 'A' : num1 + '0');
+	_putchar(num2 > 9 ? (num2 - 10) + 'A' : num2 + '0');
+	return (print_str(str + 1) + 4);
 }
 /**
  *print_pointer - a
