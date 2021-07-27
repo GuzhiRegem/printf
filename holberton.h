@@ -29,7 +29,7 @@ typedef struct printers_ret
 } printer;
 void *choose_pointer1(va_list args, int type);
 void *choose_pointer2(va_list args, int type);
-int do_thing(char *format, va_list args, int *ptr);
+int do_func(char *format, va_list args, int *ptr);
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_char(int *p);

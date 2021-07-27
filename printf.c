@@ -132,7 +132,10 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			out += do_thing((char *)format + 1, args, ptr);
+			if (format[i] == '%')
+				out += _putchar('%');
+			else
+				out += do_func((char *)format + i, args, ptr);
 			incomm = 0;
 		}
 	}
@@ -155,7 +158,6 @@ int do_func(char *format, va_list args, int *ptr)
 	func_cmp = get_func(format);
 	if (func_cmp.f)
 	{
-
 		point = choose_pointer1(args,
 					func_cmp.type);
 		if (!point)
