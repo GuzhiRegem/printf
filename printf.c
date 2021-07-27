@@ -3,18 +3,13 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
-typedef struct printers_comp
-{
-	char *str;
-	int (*f)();
-	int type;
-} printer_comp;
-typedef struct printers_ret
-{
-	int (*f)();
-	int type;
-	int chars;
-} printer;
+
+/**
+ *cmpr - a
+ *@com: a
+ *@str: a
+ *Return: a
+ */
 int cmpr(char *com, char *str)
 {
 	int out = 1;
@@ -31,22 +26,13 @@ int cmpr(char *com, char *str)
 	out += (i - 1) * 10;
 	return (out);
 }
-printer get_func(char *s)
+/**
+ *get_case - a
+ *@i: A
+ *Return: a
+ */
+printer_comp get_case(int i)
 {
-	int i = 0;
-	int comp, bool;
-	printer out;
-	printer_comp test;
-
-	/**
-	 *type numbers:
-	 *0 - int
-	 *1 - string
-	 *2 - unsigned int
-	 *3 - pointer
-	 *4 - long int
-	 *5 - unsigned long int
-	 */
 	printer_comp cases[] = {
 		{"c", print_char, 0},
 		{"s", print_str, 1},
@@ -74,13 +60,36 @@ printer get_func(char *s)
 		{"lx", print_lowhex, 0},
 		{"lX", print_uphex, 0}
 	};
+	return (cases[i]);
+}
+/**
+ *get_func - a
+ *@s: a
+ *Return: a
+ */
+printer get_func(char *s)
+{
+	int i = 0;
+	int comp, bool;
+	printer out;
+	printer_comp test;
+
+	/**
+	 *type numbers:
+	 *0 - int
+	 *1 - string
+	 *2 - unsigned int
+	 *3 - pointer
+	 *4 - long int
+	 *5 - unsigned long int
+	 */
 	i = 0;
 	out.f = NULL;
 	out.type = 0;
 	out.chars = 0;
-        while (i < 25)
+	while (i < 25)
 	{
-		test = cases[i];
+		test = get_case(i);
 		comp = cmpr(test.str, s);
 		bool = comp % 10;
 		if (bool)
@@ -94,113 +103,72 @@ printer get_func(char *s)
 	}
 	return (out);
 }
-void *choose_pointer(va_list args, int type)
-{
-	int *in;
-	unsigned int *ui;
-	long int *li;
-	unsigned long int *uli;
-	char *st;
-	void *ptr;
-	switch (type)
-	{
-	case 0:
-		in = malloc(sizeof(int));
-		if (in)
-		{
-			*in = va_arg(args, int);
-			return(in);
-		}
-		break;
-	case 1:
-		st = malloc(sizeof(char *));
-		if (st)
-		{
-			st = va_arg(args, char *);
-			return (st);
-		}
-		break;
-	case 2:
-		ui = malloc(sizeof(unsigned int));
-		if (ui)
-		{
-			*ui = va_arg(args, unsigned int);
-			return (ui);
-		}
-		break;
-	case 3:
-	        ptr = malloc(sizeof(void *));
-		if (ptr)
-		{
-			ptr = va_arg(args, void *);
-			return (ptr);
-		}
-		break;
-	case 4:
-		li = malloc(sizeof(long int));
-		if (li)
-		{
-			*li = va_arg(args, long int);
-			return (li);
-		}
-		break;
-	case 5:
-		uli = malloc(sizeof(unsigned long int));
-		if (uli)
-		{
-			*uli = va_arg(args, unsigned long int);
-			return (uli);
-		}
-		break;
-	}
-	return (NULL);
-}
+/**
+ *_printf - printf
+ *@format: a
+ *Return: a
+ */
 int _printf(const char *format, ...)
 {
 	int i, out = 0;
 	int incomm = 0;
 	va_list args;
-	printer func_cmp;
-	void *point;
-	va_start(args, format);
-        if (format)
-	{
-		for (i = 0; format[i]; i++)
-		{
-			if (!incomm)
-			{
-				if (format[i] == '%')
-					incomm = 1;
-				else
-					out += _putchar(format[i]);
-			}
-			else
-			{
-				func_cmp = get_func((char *)format + i);
+	int *ptr = &i;
 
-				if (func_cmp.f)
-				{
-
-					point = choose_pointer(args,
-							       func_cmp.type);
-
-					if (point)
-					{
-						out += func_cmp.f(point);
-						if ((func_cmp.type != 1) &&
-						    (func_cmp.type != 3))
-							free(point);
-						i += func_cmp.chars;
-					}
-				}
-				incomm = 0;
-			}
-		}
-	}
-	else
+	if (!format)
 	{
 		out += print_str("(nil)");
+		return (out);
+	}
+	va_start(args, format);
+	for (i = 0; format[i]; i++)
+	{
+		if (!incomm)
+		{
+			if (format[i] == '%')
+				incomm = 1;
+			else
+				out += _putchar(format[i]);
+		}
+		else
+		{
+			out += do_thing((char *)format + 1, args, ptr);
+			incomm = 0;
+		}
 	}
 	va_end(args);
+	return (out);
+}
+/**
+ *do_func - a
+ *@format: a
+ *@args: a
+ *@ptr: a
+ *Return: a
+ */
+int do_func(char *format, va_list args, int *ptr)
+{
+	int out = 0;
+	printer func_cmp;
+	void *point;
+
+	func_cmp = get_func(format);
+	if (func_cmp.f)
+	{
+
+		point = choose_pointer1(args,
+					func_cmp.type);
+		if (!point)
+			point = choose_pointer2(args,
+						func_cmp.type);
+		if (point)
+		{
+			out += func_cmp.f(point);
+			if ((func_cmp.type != 1) &&
+			    (func_cmp.type != 3))
+				free(point);
+			*ptr += func_cmp.chars;
+		}
+	}
 	return (out);
 }

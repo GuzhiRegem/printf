@@ -148,7 +148,7 @@ int print_lowhex(unsigned int *p)
  * @p: va_list that contains the hexadecimal to print
  * Return: number of digits printed
  */
-int print_uphex(unsigned int *p )
+int print_uphex(unsigned int *p)
 {
 	unsigned int NUM;
 	unsigned int NUM2;

@@ -1,9 +1,19 @@
 #include <unistd.h>
 #include <stdio.h>
+/**
+ *_putchar - a
+ *@c: a
+ *Return: a
+ */
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+/**
+ *_print_int - a
+ *@num: a
+ *Return: a
+ */
 int _print_int(int num)
 {
 	int out = 0;
@@ -28,28 +38,41 @@ int _print_int(int num)
 		return (_print_int(num * -1) + 1);
 	}
 }
+/**
+ *print_str - a
+ *@p: a
+ *Return: a
+ */
 int print_str(char *p)
 {
 	char *str;
+
 	str = p;
 	if (str)
 	{
 		if (!str[0])
 			return (0);
-		else
-		{
-			_putchar(str[0]);
-			return(print_str(str + 1) + 1);
-		}
+		_putchar(str[0]);
+		return (print_str(str + 1) + 1);
 	}
 	else
 		print_str("(nil)");
-	return(0);
+	return (0);
 }
+/**
+ *print_char - a
+ *@p: a
+ *Return: a
+ */
 int print_char(int *p)
 {
 	return (_putchar((int)*p));
 }
+/**
+ *print_int - a
+ *@p: a
+ *Return: a
+ */
 int print_int(int *p)
 {
 	return (_print_int((int)*p));

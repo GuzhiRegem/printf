@@ -41,7 +41,7 @@ int print_long_lowhex(unsigned long int *p)
  * @p: va_list that contains the hexadecimal to print
  * Return: number of digits printed
  */
-int print_long_uphex(unsigned long int *p )
+int print_long_uphex(unsigned long int *p)
 {
 	unsigned long int NUM;
 	unsigned long int NUM2;
