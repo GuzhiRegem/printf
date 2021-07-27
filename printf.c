@@ -117,7 +117,7 @@ int _printf(const char *format, ...)
 
 	if (!format)
 	{
-		out += print_str("(nil)");
+		out = -1;
 		return (out);
 	}
 	va_start(args, format);

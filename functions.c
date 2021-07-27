@@ -48,15 +48,10 @@ int print_str(char *p)
 	char *str;
 
 	str = p;
-	if (str)
-	{
-		if (!str[0])
-			return (0);
-		_putchar(str[0]);
-		return (print_str(str + 1) + 1);
-	}
-	else
-		print_str("(nil)");
+	if (!str[0])
+		return (0);
+	_putchar(str[0]);
+	return (print_str(str + 1) + 1);
 	return (0);
 }
 /**
