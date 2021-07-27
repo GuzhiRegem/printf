@@ -172,5 +172,10 @@ int do_func(char *format, va_list args, int *ptr)
 			*ptr += func_cmp.chars;
 		}
 	}
+	else
+	{
+		out += _putchar('%');
+		out += _putchar(format[0]);
+	}
 	return (out);
 }
