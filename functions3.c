@@ -31,8 +31,21 @@ int print_pointer(void *p)
  */
 int print_rev(char *p)
 {
-	_putchar(p[0]);
-	return (p[0]);
+	
+	char *str;
+	int i, count = 0;
+
+	str = p;
+	if (str == NULL)
+		str = ")llun(";
+	for (i = 0; str[i]; i++)
+		;
+	for (i -= 1; i >= 0; i--)
+	{
+		_putchar(str[i]);
+		count++;
+	}
+	return (count);
 }
 /**
  *print_ROT - a
@@ -41,7 +54,34 @@ int print_rev(char *p)
  */
 int print_ROT(char *p)
 {
-	return (p[0]);
+	char *str;
+	str = p;
+	unsigned int i, j;
+	int count = 0;
+	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	str = va_arg(R, char *);
+	if (str == NULL)
+		str = "(ahyy)";
+	for (i = 0; str[i]; i++)
+	{
+		for (j = 0; in[j]; j++)
+		{
+			if (in[j] == str[i])
+			{
+				_putchar(out[j]);
+				count++;
+				break;
+			}
+		}
+		if (!in[j])
+		{
+			_putchar(str[i]);
+			count++;
+		}
+	}
+	return (count);
 }
 /**
  *print_long_int - a
