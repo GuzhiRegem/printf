@@ -1,0 +1,77 @@
+npage for printf.
+.\" Contact J.P or Guzhi to correct errors.
+.TH man 8 "27 july 2021 "1.0" "printf man page"
+.SH NAME
+printf - print data
+.SH SYNOPSIS
+printf("%option", ARGUMENT);
+.SH DESCRIPTION
+Print ARGUMENT(s) according to FORMAT, or excecute acoording to OPTION:
+.SH OPTIONS
+\" double quote
+%c
+
+This option is used to print a single character
+
+%s
+
+This option is used to print a character string
+
+%%
+
+This option is used to print a simple percent symbol
+
+%d
+
+This option is used to print a decimal
+
+%i
+
+This option is used to print an integer
+
+%u
+
+This option is used to print a unsigned integer
+
+%b
+
+This option is used to print a decimal in BINARY
+
+%o
+
+This option is used to print a decimal in OCTAL
+
+%x
+
+This option is useed to print in hexa
+
+%X
+
+This option is used to print in HEXA
+
+%p
+
+This option is used to print a pointer address
+
+%lx
+
+This option is used to print long hexa
+
+%lX
+
+This option is used to print long HEXA
+
+%ld
+
+This option is used to print a long decimal
+
+^lu
+
+This option is used to print a long unsigned int
+
+.SH SEE ALSO
+man printf (to see original printf and compare)
+.SH BUGS
+No known bugs...
+.SH AUTHOR
+Juan Draper and Sebastian Moreira - Holberton School
