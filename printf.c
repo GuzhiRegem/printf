@@ -45,7 +45,6 @@ printer_comp get_case(int i)
 		{"X", print_uphex, 2},
 		{"S", print_unf_str, 1},
 		{"p", print_pointer, 3},
-		{"r", print_rev, 1},
 		{"R", print_ROT, 1},
 		{"ld", print_long_int, 4},
 		{"li", print_long_int, 4},
