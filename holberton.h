@@ -50,4 +50,5 @@ int print_long_uint(unsigned long int *p);
 int print_long_octa(long int *p);
 int print_long_lowhex(unsigned long int *p);
 int print_long_uphex(unsigned long int *p);
+int _print_long_int(long int num);
 #endif
