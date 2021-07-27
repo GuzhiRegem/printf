@@ -1,4 +1,5 @@
 #include <stdarg.h>
+#include <limits.h>
 #include <stdlib.h>
 /**
  *choose_pointer1 - a
@@ -19,6 +20,10 @@ void *choose_pointer1(va_list args, int type)
 		if (in)
 		{
 			*in = va_arg(args, int);
+			if (*in < INT_MIN)
+				*in = INT_MIN;
+			if (*in > INT_MAX)
+				*in = INT_MAX;
 			return (in);
 		}
 		break;

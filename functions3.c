@@ -21,8 +21,8 @@ int print_unf_str(char *p)
 	_putchar('x');
 	num1 = str[0] / 16;
 	num2 = str[0] % 16;
-	_putchar(num1 > 9 ? (num1 - 10) + 'A' : num1 + '0');
-	_putchar(num2 > 9 ? (num2 - 10) + 'A' : num2 + '0');
+	_putchar('A' + num1);
+	_putchar('A' + num2);
 	return (print_str(str + 1) + 4);
 }
 /**
