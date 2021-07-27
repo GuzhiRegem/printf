@@ -120,6 +120,8 @@ int _printf(const char *format, ...)
 		return (out);
 	}
 	va_start(args, format);
+	if (!args)
+		return(-1);
 	for (i = 0; format[i]; i++)
 	{
 		if (!incomm)
