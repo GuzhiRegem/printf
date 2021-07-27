@@ -88,5 +88,5 @@ int print_ROT(char *p)
  */
 int print_long_int(long int *p)
 {
-	return(_print_long_int((long int)*p));
+	return (_print_long_int((long int)*p));
 }
