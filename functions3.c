@@ -21,8 +21,7 @@ int print_pointer(void *p)
 
 	ptr = (unsigned long int)p;
 	point = &ptr;
-	print_long_lowhex(point);
-	return (0);
+	return (print_long_lowhex(point));
 }
 /**
  *print_rev - a
