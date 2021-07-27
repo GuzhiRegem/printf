@@ -139,6 +139,8 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(args);
+	if (incomm)
+		return (-1);
 	return (out);
 }
 /**
